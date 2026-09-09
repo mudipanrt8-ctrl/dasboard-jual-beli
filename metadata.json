@@ -1,0 +1,6 @@
+{
+  "name": "TrendStyle E-Commerce",
+  "description": "Platform e-commerce fashion modern dengan manajemen penjual, keranjang belanja, pelacakan pengiriman real-time, notifikasi otomatis Email/SMS, dan kontrol brand admin.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
