@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendStyle E-Commerce | Katalog & Toko Online</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/navbar.css">
+    <link rel="stylesheet" href="../CSS/cart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-top">
+            <div class="announcement-bar">
+                <span class="discount-badge">-80%</span>
+                <span>Belanja Fashion Terbaik dengan Kupon DISKON80</span>
+                <a href="#" class="belanja-btn">Belanja Sekarang</a>
+            </div>
+        </div>
+
+        <div class="navbar-main">
+            <div class="navbar-container">
+                <!-- Logo -->
+                <div class="navbar-logo">
+                    <div class="logo-icon">T</div>
+                    <div class="logo-text">
+                        <h1>TrendStyle</h1>
+                        <p>Fashion Store</p>
+                    </div>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="nav-links">
+                    <a href="#" class="nav-link active">Katalog Toko</a>
+                    <a href="tracking.html" class="nav-link">📍 Lacak Kurir Real-Time</a>
+                    <a href="seller-dashboard.html" class="nav-link">🏪 Dashboard Penjual</a>
+                    <a href="admin-dashboard.html" class="nav-link">👑 Admin Brand</a>
+                </nav>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari denim, jaket, streetwear..." id="searchInput">
+                </div>
+
+                <!-- Right Actions -->
+                <div class="navbar-actions">
+                    <button class="notification-btn" id="notificationBtn">🔔 Notifikasi</button>
+                    <button class="cart-btn" id="cartBtn">🛍️ Keranjang (<span id="cartCount">0</span>)</button>
+                    <button class="login-btn" id="loginBtn">🔑 Masuk</button>
+                    <button class="logout-btn" id="logoutBtn" style="display:none;">🚪 Keluar</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <h1>KOLEKSI FASHION TERBARU 2026</h1>
+                <p>Dapatkan gaya terbaik dengan harga terjangkau. 100% produk original dengan pengiriman kilat dan tracking real-time.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="document.getElementById('product-catalog').scrollIntoView({ behavior: 'smooth' })">Lihat Koleksi</button>
+                    <button class="btn-secondary" onclick="window.location='tracking.html'">Lacak Pesanan</button>
+                </div>
+            </div>
+            <div class="hero-right">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=700&auto=format&fit=crop&q=80" alt="Fashion Model">
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG -->
+    <section id="product-catalog" class="products-section">
+        <h2>Katalog Produk Fashion</h2>
+        <div class="products-grid" id="productsContainer">
+            <!-- Produk akan dimuat di sini via JavaScript -->
+        </div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Keranjang Belanja</h2>
+                <button class="close-btn" onclick="closeCart()">✕</button>
+            </div>
+            <div class="cart-items" id="cartItemsContainer">
+                <!-- Item keranjang akan dimuat di sini -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <p>Total: <strong id="cartTotal">Rp 0</strong></p>
+                </div>
+                <button class="checkout-btn" onclick="goToCheckout()">Lanjut Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TrendStyle</h3>
+                <p>Platform e-commerce fashion modern dengan layanan tracking real-time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="tracking.html">Tracking</a></li>
+                    <li><a href="seller-dashboard.html">Dashboard Penjual</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontak</h4>
+                <p>📧 info@trendstyle.com</p>
+                <p>📞 +62 812-3456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TrendStyle. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL LOGIN -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login Dashboard E-Commerce</h2>
+                <button class="close-btn" onclick="closeLoginModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="emailInput" required placeholder="nama@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="passwordInput" required placeholder="Masukkan password">
+                    </div>
+                    <div class="form-group">
+                        <label>Role (Peran)</label>
+                        <select id="roleSelect">
+                            <option value="buyer">🛍️ Pembeli</option>
+                            <option value="seller">🏪 Penjual</option>
+                            <option value="admin">👑 Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Masuk</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="../JavaScript/config.js"></script>
+    <script src="../JavaScript/utils.js"></script>
+    <script src="../JavaScript/auth.js"></script>
+    <script src="../JavaScript/cart.js"></script>
+    <script src="../JavaScript/notifications.js"></script>
+    <script>
+        // Load produk saat halaman dimuat
+        window.onload = function() {
+            loadProducts();
+            checkUserLogin();
+        };
+
+        function loadProducts() {
+            const container = document.getElementById('productsContainer');
+            const products = PRODUCTS; // dari config.js
+            
+            container.innerHTML = products.map(prod => `
+                <div class="product-card">
+                    <img src="${prod.image}" alt="${prod.name}">
+                    <div class="product-info">
+                        <h3>${prod.name}</h3>
+                        <p>${prod.description}</p>
+                        <div class="product-price">
+                            <span class="price">Rp ${formatRupiah(prod.price)}</span>
+                            ${prod.originalPrice ? `<span class="original-price">Rp ${formatRupiah(prod.originalPrice)}</span>` : ''}
+                        </div>
+                        <div class="product-rating">
+                            ⭐ ${prod.rating} (${prod.soldCount} terjual)
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('${prod.id}', '${prod.name}', ${prod.price})">+ Keranjang</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openCart() {
+            document.getElementById('cartDrawer').style.display = 'flex';
+        }
+
+        function closeCart() {
+            document.getElementById('cartDrawer').style.display = 'none';
+        }
+
+        function goToCheckout() {
+            closeCart();
+            window.location.href = 'checkout.html';
+        }
+    </script>
+</body>
+</html>
